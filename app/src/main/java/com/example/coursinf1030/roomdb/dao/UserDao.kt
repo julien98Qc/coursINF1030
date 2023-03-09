@@ -1,5 +1,6 @@
 package com.example.coursinf1030.roomdb.dao
 
+import androidx.lifecycle.LiveData
 import androidx.room.Dao
 import androidx.room.Delete
 import androidx.room.Insert
@@ -15,16 +16,16 @@ Les annotations @Query, @Insert et @Delete sont utilisées pour indiquer à Room
 interface UserDao {
     //Retourne tous les User
     @Query("SELECT * FROM user")
-    fun getAll(): List<User>
+    fun getAll(): LiveData<List<User>>
 
     //Retourne une liste d'User qui correspond à la liste d'id
     @Query("SELECT * FROM user WHERE uid IN (:userIds)") //Le ":" est important, le paramètre donné à cette fonction remplacera ":userIds"
-    fun loadAllByIds(userIds: IntArray): List<User>
+    fun loadAllByIds(userIds: IntArray): LiveData<List<User>>
 
     //Retourne l'User dont le nom et prénom correspond
     @Query("SELECT * FROM user WHERE first_name LIKE :first AND "
             + "last_name LIKE :last LIMIT 1")
-    fun findByName(first: String, last: String): User
+    fun findByName(first: String, last: String): LiveData<User>
 
     //Insère un nombre variable d'User
     @Insert
