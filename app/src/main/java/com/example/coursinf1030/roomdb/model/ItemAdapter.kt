@@ -34,11 +34,13 @@ class ItemAdapter(private val dataSet: List<User>) :
         return ViewHolder(view)
     }
 
-    // Replace the contents of a view (invoked by the layout manager)
+    // Remplace le contenu du prototype
     override fun onBindViewHolder(viewHolder: ViewHolder, position: Int) {
 
-        // Get element from your dataset at this position and replace the
-        // contents of the view with that element
+        /*
+        Prend l'élément de notre collection de données à la position mentionnée
+        et remplace le contenu de notre prototype avec cet élément
+        */
         viewHolder.nom.text = dataSet[position].lastName
         viewHolder.prenom.text = dataSet[position].firstName
     }

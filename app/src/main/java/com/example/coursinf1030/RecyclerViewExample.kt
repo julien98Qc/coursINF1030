@@ -15,6 +15,7 @@ class RecyclerViewExample : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_recycler_view_example)
 
+        //On accède au singleton de la base de donnée
         val application = this.application as ExampleApplication
         val appDb = application.getDb()
 
@@ -30,8 +31,11 @@ class RecyclerViewExample : AppCompatActivity() {
             dao.insert(user)
         }
 
+        //On récupère notre RecyclerView
         myRecView = findViewById(R.id.myRecView)
+        //On lui assigne un LayoutManager
         myRecView.layoutManager = LinearLayoutManager(this)
+        //On lui fournit notre Adapter avec notre collection de données
         myRecView.adapter = ItemAdapter(appDb.userDao().getAll())
     }
 }

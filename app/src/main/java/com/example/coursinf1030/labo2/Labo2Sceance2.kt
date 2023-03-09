@@ -77,6 +77,11 @@ class Labo2Sceance2 : AppCompatActivity() {
         Log.d(TAG, "onDestroy")
     }
 
+    override fun onRestart() {
+        super.onRestart()
+        Log.d(TAG, "onRestart")
+    }
+
     //Ajoute des logs aux methodes onSaveInstanceState() et onRestorestate()
     override fun onSaveInstanceState(outState: Bundle) {
         outState.putString(STATE_VARIABLE1, variable1)
